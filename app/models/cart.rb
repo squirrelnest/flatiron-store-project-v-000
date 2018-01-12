@@ -13,8 +13,9 @@ class Cart < ActiveRecord::Base
     sum
   end
 
-  def number_to_currency(total)
-    Money.us_dollar(total).format
-  end
+  # def number_to_currency(total)
+  #   # Money.us_dollar(total).format
+  #   total.decimal(2)
+  # end
 
 end

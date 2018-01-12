@@ -8,8 +8,10 @@ class CartsController < ApplicationController
       line_item.item.inventory -= line_item.quantity
       line_item.item.save
     end
-    current_cart.delete
-    redirect_to cart_path
+    old_cart_id = current_cart.id
+    current_user.current_cart = nil
+    current_user.save
+    redirect_to cart_path(id: old_cart_id)
   end
 
 end

@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def current_cart
-    Cart.find_by(id: self.cart_ids.last)
-  end
+  # def current_cart
+  #   Cart.find_by(id: self.cart_ids.last)
+  # end
 
 end
