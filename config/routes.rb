@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'store#index', as: 'store'
+  root 'store#index', as: 'home'
+  get '/store', to: 'store#index'
   resources :items, only: [:show, :index]
   resources :categories, only: [:show, :index]
   resources :users, only: [:show]

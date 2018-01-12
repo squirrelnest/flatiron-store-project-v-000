@@ -11,9 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111070543) do
+ActiveRecord::Schema.define(version: 20180112014816) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "status"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "category_id"
+    t.string  "title"
+    t.integer "inventory"
+    t.float   "price"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "item_id"
+    t.integer "quantity", default: 1
+  end
 
   create_table "users", force: :cascade do |t|
+    t.integer  "current_cart_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
