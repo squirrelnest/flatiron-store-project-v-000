@@ -152,7 +152,10 @@ describe 'Feature Test: Cart', :type => :feature do
         expect(@user.current_cart.line_items.first.quantity).to eq(2)
         expect(page).to have_content("Quantity: 2")
         total = first_item.price * 2
-        expect(page).to have_content("$#{total.to_f/100}")
+        # expect(page).to have_content("$#{(total.to_f/100).round(2)}")
+        expect(page).to have_content(sprintf("%.2f",total))
+
+
       end
 
     end

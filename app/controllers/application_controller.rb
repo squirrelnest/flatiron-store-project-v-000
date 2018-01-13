@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_cart
-    current_user.current_cart
+    # current_user.current_cart
+    if current_user && current_user.current_cart
+      @cart = current_user.current_cart
+    else
+      @cart = Cart.create(user_id: current_user.id, status: "nil")
+    end
+    @cart
   end
 
 end

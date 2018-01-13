@@ -2,7 +2,7 @@
   Item.create(
     title: Faker::Commerce.product_name,
     inventory: Faker::Number.number(2),
-    price: Faker::Number.number(4)
+    price: Faker::Number.decimal(2, 2)
   )
   Category.create(title: Faker::Commerce.department)
 end

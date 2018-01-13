@@ -1,5 +1,12 @@
 describe 'Feature Test: Store', :type => :feature do
     describe "Category List" do
+
+      before(:each) do
+        @user = User.first
+        login_as(@user, scope: :user)
+        # current_cart = Cart.create(user_id: @user.id, status: "nil")
+      end
+
       it "displays all of the categories as links" do
         visit store_path
         Category.all.each do |category|
